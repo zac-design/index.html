@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxAero - Master the Radio. Own the Sky.</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NED2B9M7M8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NED2B9M7M8');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 56px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 28px;
+            color: #00d4ff;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+        
+        .description {
+            font-size: 20px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 150, 255, 0.1) 100%);
+            border-left: 4px solid #00d4ff;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .highlight-box p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0096ff 100%);
+            color: #0a1628;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1a2744 0%, #0a1628 100%);
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: #00d4ff;
+        }
+        
+        .modal h2 {
+            color: #00d4ff;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+        
+        .features-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+        .feature-item {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-item strong {
+            color: #00d4ff;
+        }
+        
+        footer {
+            margin-top: 80px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 42px;
+            }
+            
+            .tagline {
+                font-size: 22px;
+            }
+            
+            .description {
+                font-size: 18px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">VoxAero</h1>
+        <p class="tagline">Master the radio. Own the sky.</p>
+        
+        <p class="description">
+            Radio communications are one of the most intimidating parts of flight training. 
+            Students freeze up on frequency, and there's no safe way to practice before you're live with real ATC.
+        </p>
+        
+        <div class="highlight-box">
+            <p>
+                <strong>VoxAero changes that.</strong> Practice realistic ATC scenarios from engine start to shutdown. 
+                Build confidence with AI controllers that respond in real-time—not pre-recorded scripts. 
+                Every conversation adapts to you, just like real ATC. 
+                Build confidence before you're airborne.
+            </p>
+        </div>
+        
+        <div class="cta-buttons">
+            <button class="btn btn-primary" onclick="showModal()">See how it works</button>
+            <button class="btn btn-secondary" onclick="trackInterest()">I'm interested</button>
+        </div>
+        
+        <footer>
+            <p>Built by flight instructors, for pilots</p>
+        </footer>
+    </div>
+    
+    <!-- Modal -->
+    <div id="modal" class="modal" onclick="closeModalOnOutsideClick(event)">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>How VoxAero Works</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <strong>Real-time AI conversations:</strong> Not pre-recorded scripts. VoxAero's AI responds dynamically to YOUR radio calls, just like real ATC.
+                </div>
+                <div class="feature-item">
+                    <strong>Full flight simulation:</strong> Practice from engine start to shutdown, or jump into any phase of flight.
+                </div>
+                <div class="feature-item">
+                    <strong>Instant feedback:</strong> VoxAero identifies mistakes in phraseology, readbacks, and timing—then shows you how to fix them.
+                </div>
+                <div class="feature-item">
+                    <strong>Structured debrief:</strong> After each session, review what went well and what needs work.
+                </div>
+                <div class="feature-item">
+                    <strong>Practice with Tower, Radio, Information, and other ATC services:</strong> Train across multiple airport types and service levels.
+                </div>
+                <div class="feature-item">
+                    <strong>Customizable scenarios:</strong> Choose your departure and destination, weather conditions, and traffic density.
+                </div>
+                <div class="feature-item">
+                    <strong>Track your progress:</strong> See your improvement over time with detailed performance analytics.
+                </div>
+                <div class="feature-item">
+                    <strong>Practice YOUR routes:</strong> Fly from your home strip to anywhere you'd normally go.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showModal() {
+            // Track "See how it works" click
+            gtag('event', 'button_click', {
+                'button_name': 'see_how_it_works',
+                'button_location': 'homepage_cta'
+            });
+            
+            document.getElementById('modal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        
+        function closeModalOnOutsideClick(event) {
+            if (event.target.id === 'modal') {
+                closeModal();
+            }
+        }
+        
+        function trackInterest() {
+            // Track "I'm interested" click
+            gtag('event', 'button_click', {
+                'button_name': 'im_interested',
+                'button_location': 'homepage_cta'
+            });
+            
+            // Show confirmation message
+            alert("Thanks for your interest! We're currently in development and will launch soon. Check back at voxaero.co.uk for updates!");
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
